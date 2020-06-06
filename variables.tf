@@ -61,7 +61,7 @@ variable "service_subnet_ids" {
 }
 
 variable "alb_subnet_ids" {
-  type = string
+  type = list(string)
 }
 
 variable "vpc_id" {}
