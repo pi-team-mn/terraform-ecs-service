@@ -56,8 +56,12 @@ variable "cluster_name" {
   type = string
 }
 
-variable "subnet_ids" {
+variable "service_subnet_ids" {
   type = list(string)
+}
+
+variable "alb_subnet_ids" {
+  type = string
 }
 
 variable "vpc_id" {}

@@ -1,6 +1,6 @@
 resource "aws_alb" "core" {
   name            = "${var.application_name}-alb${var.env == "master" ? "" : "-${var.env}"}"
-  subnets         = var.subnet_ids
+  subnets         = var.alb_subnet_ids
   security_groups = [aws_security_group.core_alb.id]
 
   access_logs {

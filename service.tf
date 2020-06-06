@@ -7,7 +7,7 @@ resource "aws_ecs_service" "core" {
 
   network_configuration {
     security_groups = [aws_security_group.core_ecs_tasks.id]
-    subnets         = var.subnet_ids
+    subnets         = var.service_subnet_ids
   }
 
   load_balancer {
