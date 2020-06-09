@@ -21,8 +21,6 @@ resource "aws_alb_target_group" "core" {
   slow_start  = 30
   tags        = var.tags
 
-  depends_on = [aws_alb_listener.core]
-
   health_check {
     interval            = 10
     path                = var.health_endpoint
