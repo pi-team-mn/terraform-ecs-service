@@ -21,6 +21,8 @@ resource "aws_alb_target_group" "core" {
   slow_start  = 30
   tags        = var.tags
 
+  depends_on = [aws_alb_listener.core]
+
   health_check {
     interval            = 10
     path                = var.health_endpoint
@@ -52,6 +54,7 @@ resource "aws_alb_listener" "http_redirect" {
   port              = "80"
   protocol          = "HTTP"
 
+  depends_on = [aws_alb_listener.core]
   default_action {
     type = "redirect"
 

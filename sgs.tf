@@ -19,6 +19,13 @@ resource "aws_security_group" "core_alb" {
   }
 
   egress {
+    from_port = var.internal_port
+    protocol  = "tcp"
+    to_port   = var.internal_port
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -31,6 +38,7 @@ resource "aws_security_group" "core_ecs_tasks" {
   description = "${var.application_name}-${var.env} Application Firewalling"
   vpc_id      = var.vpc_id
   tags        = var.tags
+
   ingress {
     protocol        = "tcp"
     from_port       = var.internal_port
